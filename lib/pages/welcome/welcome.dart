@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_app/common/values/colors.dart';
 import 'package:learning_app/main.dart';
 import 'package:learning_app/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:learning_app/pages/welcome/bloc/welcome_events.dart';
@@ -49,9 +50,9 @@ PageController pageController=PageController(initialPage: 0);
                   position: state.page,
                   dotsCount: 3,
                 decorator: DotsDecorator(
-                  color: Colors.blue,
+                  color: AppColors.primaryThirdElementText,
                   size: Size.square(8.0),
-                  activeColor: Colors.greenAccent,
+                  activeColor: AppColors.primaryText,
                   activeSize: Size(18.0,8.0),
                   activeShape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)
@@ -76,11 +77,11 @@ PageController pageController=PageController(initialPage: 0);
                     child: Image.asset(imgPath,fit: BoxFit.cover,),
                   ),
                   Container(
-                    child: Text(title,style: TextStyle(color: Colors.black,fontSize: 24.sp,fontWeight: FontWeight.normal),),
+                    child: Text(title,style: TextStyle(color: AppColors.primaryText,fontSize: 24.sp,fontWeight: FontWeight.normal),),
                   ),
                   Container(
                     padding: EdgeInsets.only(left: 30.w,right: 30.w),
-                    child: Text(subTitle,style: TextStyle(color: Colors.black.withOpacity(0.5),fontSize: 14.sp,fontWeight: FontWeight.normal),),
+                    child: Text(subTitle,style: TextStyle(color: AppColors.primarySecondaryElementText,fontSize: 14.sp,fontWeight: FontWeight.normal),),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -98,7 +99,7 @@ PageController pageController=PageController(initialPage: 0);
                       width: 325.w,
                       height: 50.h,
                      decoration: BoxDecoration(
-                      color:Colors.blue,
+                      color:AppColors.primaryElement,
                       borderRadius: BorderRadius.circular(15.w),
                       boxShadow: [BoxShadow(
                         color: Colors.grey.withOpacity(0.1),
