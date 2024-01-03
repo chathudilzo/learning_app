@@ -2,25 +2,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learning_app/app_blocs.dart';
-import 'package:learning_app/app_events.dart';
-import 'package:learning_app/app_state.dart';
+
+import 'package:learning_app/common/routes/routes.dart';
 import 'package:learning_app/common/values/colors.dart';
 import 'package:learning_app/firebase_options.dart';
-import 'package:learning_app/pages/bloc_providers.dart';
-import 'package:learning_app/pages/register/register.dart';
-import 'package:learning_app/pages/sign_in/bloc/signin_blocs.dart';
-import 'package:learning_app/pages/sign_in/sign_in.dart';
-import 'package:learning_app/pages/welcome/bloc/welcome_blocs.dart';
-import 'package:learning_app/pages/welcome/welcome.dart';
+import 'package:learning_app/global.dart';
+
 
 void main()async {
-  WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-   options: DefaultFirebaseOptions.currentPlatform,
- );
-
+  await Global.init();
   runApp(const MyApp());
 }
 
@@ -32,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       
-      providers:AppBlocProviders.allBlocProviders ,
+      providers:[...AppPages.allBlocProviders(context)] ,
     child: ScreenUtilInit(builder:(BuildContext context,child)=>MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -46,12 +37,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:const Welcome(),
-      routes: {
-        //'myHomePage':(context)=>const MyHomePage(),
-        "signIn":(context)=>const SignIn(),
-        "register":(context)=>const Register()
-      },
+      //home:const Welcome(),
+      onGenerateRoute: AppPages.GenerateRouteSettings,
+      // routes: {
+      //   //'myHomePage':(context)=>const MyHomePage(),
+      //   "signIn":(context)=>const SignIn(),
+      //   "register":(context)=>const Register()
+      // },
     ),));
   }
 }

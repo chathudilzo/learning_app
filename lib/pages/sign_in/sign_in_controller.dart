@@ -45,6 +45,8 @@ final BuildContext context;
 
           if(user!=null){
               print('have a user');
+              Navigator.of(context).pushNamedAndRemoveUntil('/application', (route) => false);
+              
           }else{
             toastInfo(msg: 'Not a user of this app');
             return;

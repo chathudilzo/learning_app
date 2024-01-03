@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learning_app/app_blocs.dart';
+
 import 'package:learning_app/pages/register/bloc/register_blocs.dart';
 import 'package:learning_app/pages/sign_in/bloc/signin_blocs.dart';
 import 'package:learning_app/pages/welcome/bloc/welcome_blocs.dart';

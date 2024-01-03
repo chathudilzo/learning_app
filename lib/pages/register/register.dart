@@ -6,7 +6,7 @@ import 'package:learning_app/pages/register/bloc/register_blocs.dart';
 import 'package:learning_app/pages/register/bloc/register_events.dart';
 import 'package:learning_app/pages/register/bloc/register_state.dart';
 import 'package:learning_app/pages/register/register_controller.dart';
-import 'package:learning_app/pages/sign_in/bloc/signin_blocs.dart';
+
 
 
 class Register extends StatefulWidget {
