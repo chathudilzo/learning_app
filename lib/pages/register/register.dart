@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
               ),              Center(child: reusableText('Enter your details below to Sign Up')),
               Container(
                 margin: EdgeInsets.only(
-                  top: 36.h
+                  top: 60.h
                 ),
                 padding: EdgeInsets.only(left: 25.w,right: 25.w),
                 child: Column(

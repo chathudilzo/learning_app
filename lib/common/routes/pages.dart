@@ -6,6 +6,10 @@ import 'package:learning_app/common/routes/names.dart';
 import 'package:learning_app/global.dart';
 import 'package:learning_app/pages/application/application_page.dart';
 import 'package:learning_app/pages/application/bloc/app_blocs.dart';
+import 'package:learning_app/pages/home/bloc/home_page_blocs.dart';
+import 'package:learning_app/pages/home/home_page.dart';
+import 'package:learning_app/pages/profile/settings/bloc/settings_blocs.dart';
+import 'package:learning_app/pages/profile/settings/settings_page.dart';
 import 'package:learning_app/pages/register/bloc/register_blocs.dart';
 import 'package:learning_app/pages/register/register.dart';
 import 'package:learning_app/pages/sign_in/bloc/signin_blocs.dart';
@@ -30,7 +34,9 @@ class AppPages{
     PageEntity(route: AppRoutes.APPLICATION,
      page: const ApplicationPage(),
       bloc: BlocProvider(create: (_) =>AppBlocs() ,)
-      )      
+      ),
+      PageEntity(route: AppRoutes.HOME_PAGE, page: HomePage(),bloc: BlocProvider(create:(_)=>HomePageBlocs())),
+      PageEntity(route: AppRoutes.SETTINGS, page: SettingsPage(),bloc: BlocProvider(create: (_)=>SettingsBlocs()))      
   ];
   }
 
@@ -49,10 +55,16 @@ class AppPages{
       //check for rotes name matching when nav get triggered
       var result=routes().where((element) => element.route==settings.name);
       if(result.isNotEmpty){
-        bool deviceFirstOpen=Global.storageService.getDeviceFirstOpen();
-        if(result.first.route==AppRoutes.INITIAL && deviceFirstOpen){
-          return MaterialPageRoute(builder: (_)=>SignIn(),settings: settings);
-        }
+         bool deviceFirstOpen=Global.storageService.getDeviceFirstOpen();//returns true if already opend once
+        // //if route is welcome and device open is true
+         if(result.first.route==AppRoutes.INITIAL && deviceFirstOpen){
+           bool isLoggedIn=Global.storageService.getIsLogedIn();//
+           if(isLoggedIn){
+             return MaterialPageRoute(builder: (_)=>const ApplicationPage(),settings: settings);
+           }
+
+           return MaterialPageRoute(builder: (_)=>SignIn(),settings: settings);
+         }
 
         return MaterialPageRoute(builder:(_)=>result.first.page,settings: settings);
       }

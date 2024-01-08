@@ -49,7 +49,8 @@ class _SignInState extends State<SignIn> {
                     buildTextField('Enter your password', 'password','lock.png',(value){
                       context.read<SignInBloc>().add(PasswordEvent(value));
                     }),
-                    forgotPassword()
+                    forgotPassword(),
+                    SizedBox(height: 70.h,)
                   ],
                 ),
               ),

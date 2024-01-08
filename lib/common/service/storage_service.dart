@@ -19,4 +19,17 @@ class StorageService{
   bool getDeviceFirstOpen(){
     return _prefs.getBool(AppConstatnts.STORAGE_DEVICE_OPEN_FIRST_TIME)?? false;
   }
+
+    Future<bool>setString(String key,String value)async{
+    return await _prefs.setString(key, value);
+  }
+
+  bool getIsLogedIn(){
+    return _prefs.getString(AppConstatnts.STORAGE_USER_TOKEN_KEY)==null?false:true;
+  }
+
+  Future<bool> removeLog(String key){
+    return _prefs.remove(key);
+  }
+
 }

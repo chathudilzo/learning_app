@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       
       providers:[...AppPages.allBlocProviders(context)] ,
-    child: ScreenUtilInit(builder:(BuildContext context,child)=>MaterialApp(
+    child: ScreenUtilInit(
+      designSize: const Size(375, 812),
+      builder:(BuildContext context,child)=>MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
